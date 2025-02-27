@@ -1,0 +1,32 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  background: rgb(30,30,30);
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;  /* 畫布在最底層 */
+}
+
+#overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  font-family: Arial, sans-serif;
+  z-index: 10;  /* 顯示在上層 */
+}
+
+#overlay img {
+  width: 200px; /* 調整圖片大小 */
+  opacity: 0.8; /* 圖片略帶透明 */
+}
