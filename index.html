@@ -1,42 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Electric Strings Background</title>
-  <link rel="stylesheet" href="./style.css">
-  <script>
-    window.requestAnimFrame = (function() {
-      return (
-        window.requestAnimationFrame ||
-        window.webkitRequestAnimationFrame ||
-        window.mozRequestAnimationFrame ||
-        window.oRequestAnimationFrame ||
-        window.msRequestAnimationFrame ||
-        function(callback) {
-          window.setTimeout(callback);
-        }
-      );
-    })();
 
-    function init(elemid) {
-      let canvas = document.getElementById(elemid),
-          c = canvas.getContext("2d"),
-          w = (canvas.width = window.innerWidth),
-          h = (canvas.height = window.innerHeight);
-      c.fillStyle = "rgba(30,30,30,1)";
-      c.fillRect(0, 0, w, h);
-      return { c: c, canvas: canvas };
-    }
-  </script>
+<?php
+$file = 'counter.txt';
+
+// 檢查文件是否存在
+if (!file_exists($file)) {
+    // 如果文件不存在，創建文件並設置初始值為0
+    file_put_contents($file, '0');
+}
+
+// 讀取當前的計數值
+$count = (int)file_get_contents($file);
+
+// 增加計數
+$count++;
+
+// 將新的計數值寫回文件
+file_put_contents($file, (string)$count);
+?><!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+	 <script src="0.js"  defer></script>
+	   <link rel="stylesheet" href="0.css">
+
 </head>
 <body>
-  <canvas id="canvas"></canvas>
-  <!-- overlay 放置於畫布之上 -->
-  <div id="overlay">
-    <h1>我的標題</h1>
-    <p>這是一些描述文字。</p>
-    <img src="your-image.png" alt="示例圖片">
-  </div>
-  <script src="./script.js"></script>
+ 
+  <form id="myForm">
+        <label for="name">身高(公尺)</label>
+        <input type="text" id="high" name="high" required>
+		<label for="name">體重</label>
+        <input type="password" id="weight" name="weight" required>
+        <button type="submit">計算</button>
+    </form>
+    
+    <p id="result"></p>
+	<p id="result1"></p>
+	<p id="result11"></p>
+	<p id="result111"></p>
+	 <p>本頁面已被訪問 <?php echo $count; ?> 次。</p>
 </body>
 </html>
+
